@@ -1,0 +1,164 @@
+@import "tailwindcss";
+
+:root {
+  --background: #050816;
+  --foreground: #ffffff;
+  --primary: #7c3aed;
+  --secondary: #06b6d4;
+  --accent: #22c55e;
+  --muted: #94a3b8;
+  --card: rgba(255, 255, 255, 0.03);
+  --border: rgba(255, 255, 255, 0.08);
+  --glass: rgba(255, 255, 255, 0.05);
+}
+
+.light {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --muted: #64748b;
+  --card: rgba(255, 255, 255, 0.8);
+  --border: rgba(15, 23, 42, 0.08);
+  --glass: rgba(255, 255, 255, 0.7);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-muted: var(--muted);
+  --color-card: var(--card);
+  --color-border: var(--border);
+  --color-glass: var(--glass);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-space-grotesk);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(124, 58, 237, 0.4);
+  color: #fff;
+}
+
+.glass {
+  background: var(--glass);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+}
+
+.neon-glow {
+  box-shadow:
+    0 0 20px rgba(124, 58, 237, 0.3),
+    0 0 60px rgba(6, 182, 212, 0.15);
+}
+
+.neon-text {
+  text-shadow:
+    0 0 20px rgba(124, 58, 237, 0.5),
+    0 0 40px rgba(6, 182, 212, 0.3);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #7c3aed 0%, #06b6d4 50%, #22c55e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.animated-gradient {
+  background: linear-gradient(
+    -45deg,
+    #050816,
+    #0f0729,
+    #051525,
+    #050816
+  );
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(124, 58, 237, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124, 58, 237, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.section-padding {
+  @apply px-4 py-24 md:px-8 lg:px-16 xl:px-24;
+}
+
+.container-max {
+  @apply mx-auto max-w-7xl;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #7c3aed, #06b6d4);
+  border-radius: 3px;
+}
